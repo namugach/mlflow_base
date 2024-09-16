@@ -2,7 +2,6 @@
 
 # 서빙 확인을 위한 curl 요청
 echo "Testing model serving with curl..."
-sleep 5  # 서버가 준비될 시간을 줌
 curl -X POST -H "Content-Type: application/json" -d '{
   "dataframe_split": {
     "columns": ["age", "sex", "bmi", "bp", "s1", "s2", "s3", "s4", "s5", "s6"],

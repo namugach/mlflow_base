@@ -2,6 +2,8 @@
 
 /root/src/run/train.sh
 /root/src/run/serve.sh &
+/root/src/run/ui_server.sh &
+
 
 # 모델 서버가 127.0.0.1:1234에서 열릴 때까지 대기
 echo "Waiting for the model server to start..."
