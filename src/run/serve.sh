@@ -9,4 +9,4 @@ echo "Extracted RUN_ID: $RUN_ID"
 
 # 모델 서빙
 echo "Serving the model..."
-mlflow models serve -m /root/work/train/sklearn_elasticnet_diabetes/mlruns/0/$RUN_ID/artifacts/model -p 1234
+mlflow models serve -m /root/work/train/sklearn_elasticnet_diabetes/mlruns/0/$RUN_ID/artifacts/model --host 0.0.0.0 -p 1234
