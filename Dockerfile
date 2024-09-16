@@ -35,15 +35,22 @@ RUN export PYENV_ROOT="$HOME/.pyenv" \
 && pyenv global 3.12.3 \
 && pip install --upgrade pip \
 && pip install mlflow \
-&& pip install virtualenv
+&& pip install virtualenv \
+&& pip install xgboost
 
 # work 디렉토리로 이동 후, MLflow 클론
 RUN mkdir -p /root/work && cd /root/work  \
 && git clone https://github.com/mlflow/mlflow.git
 
 # 필요한 디렉토리 생성 및 파일 복사
-RUN mkdir -p /root/work/train/sklearn_elasticnet_diabetes  \
-&& cp /root/work/mlflow/examples/sklearn_elasticnet_diabetes/linux/* /root/work/train/sklearn_elasticnet_diabetes/
+RUN mkdir -p /root/work/models/sklearn_elasticnet_diabetes  \
+&& mkdir -p /root/work/models/sklearn_autolog \
+&& mkdir -p /root/work/models/xgboost \
+&& cp /root/work/mlflow/examples/sklearn_elasticnet_diabetes/linux/* /root/work/models/sklearn_elasticnet_diabetes/ \
+&& cp -R /root/work/mlflow/examples/sklearn_autolog/* /root/work/models/sklearn_autolog \
+&& cp -R /root/work/mlflow/examples/xgboost/* /root/work/models/xgboost
+
+RUN mkdir -p /root/work/train
 
 # 스크립트 추가
 COPY src /root/src
