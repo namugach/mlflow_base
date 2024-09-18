@@ -3,7 +3,6 @@
 path=/root/src/basic/res/mlruns/0
 
 # 최신 실행 ID를 추출
-# RUN_ID=$(ls mlruns/0 | head -n 1 | xargs -n 1 basename)
 RUN_ID=$(ls -tr $path | grep -v 'meta.yaml' | grep -v 'datasets' | head -n 1)
 echo "Extracted RUN_ID: $RUN_ID"
 
